@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="scripts/leaflet.css">
     <script src="scripts/leaflet.js"></script>
-	
+	<link rel="icon" type="image/x-icon" href="icons/icon.png" />
 <style>
 @font-face {
             font-family: 'Mookmania';
@@ -57,6 +57,27 @@
 	iconAnchor:   [15, 45],
 	popupAnchor:  [-2, -29]
 });
+ //Coordinate Finder
+  var polylines = [];
+	 var pointA = L.marker([0, 0], {
+      draggable: true,
+    });
+    pointA.bindPopup('Начало').openPopup();
+	pointA.on('dragend', function(remove) {
+	polylines.forEach(function (item) {
+    map.removeLayer(item)
+});
+});
+    var pointB = L.marker([10, 10], {
+      draggable: true,
+    });
+    pointB.bindPopup('Конец').openPopup();
+	pointB.on('dragend', function(e) {
+	var travel = L.polyline([pointA.getLatLng(), pointB.getLatLng()]);
+	travel.addTo(map);
+	polylines.push(travel);
+      pointB.getPopup().setContent((map.distance(pointA.getLatLng(), pointB.getLatLng())/7000).toFixed(0).toString()+' миль').openOn(map);
+    });
         var ritland = L.marker([9.18, 13.8], {icon: capitalIcon,title:'Ритланд'})
             .bindPopup("<h3> Ритланд </h2> <b> Столица </b> - Сталесвет. <br> <b>Известные организации</b> - 'Верные Солнцу', 'Острая Луна'. <img src='data/bot.jpg'/> <br> Самодержавие людей. Известно искусством 'ковки душ', позволяющей создавать разумных автоматонов. Военный и религиозный центр борьбы Светлых рас с дроу, дуэргарами и их союзниками.",customOptions);
 		var whitetwrs = L.marker([37.5, -1.75], {icon: capitalIcon,title:'Белые Башни'})
@@ -74,10 +95,12 @@
 
 	//Marker Groups
   var cities = L.layerGroup([ritland,whitetwrs,cadur,horter,triran,safur,raiho]);
+  var travels = L.layerGroup([pointA,pointB]);
   cities.addTo(map);
 //Marker Overlay
   var overlays={
-    "Столицы и государства" : cities
+    "Столицы и государства" : cities,
+	"Расстояние" : travels
     }
 //GROUP CONTROLS
   L.control.layers(null, overlays).addTo(map);
