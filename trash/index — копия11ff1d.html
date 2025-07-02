@@ -5,16 +5,9 @@
     <title>Зов из Глубин</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="scripts/leaflet.css">
-	<link rel="stylesheet" href="css/style.css">
     <script src="scripts/leaflet.js"></script>
-	<link rel="icon" type="image/x-icon" href="icons/icon.png" />
+	
 <style>
-body {background-color: #1b243a;height: 100%; margin: 0;}
-a:link, a:visited {color:#6a6a6a;font-family: 'Mookmania';}
-a:hover, a:active {
-  color:black;
-}
-
 @font-face {
             font-family: 'Mookmania';
             src: url('data/Mookmania.otf');
@@ -32,22 +25,8 @@ a:hover, a:active {
     outline: 0;
 }
 </style>
-<nav>
-<ul>
-<li style="color:black;background-color: #ead8c1;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 80 px;
-  display: inline-block;">
- <a style="text-decoration: none; font-size: 20px;color:black;" href="index.html" > <b> Карта мира&nbsp; </b>   </a>
- <a style="text-decoration: none;font-size: 20px;" href="triran.html"> <b> Карта Трирана&nbsp; </b> </a>
- <a style="text-decoration: none;font-size: 20px;" href="religion.html"> <b> Религия&nbsp; </b> </a> </li>
-</ul>
-</nav>
   </head>
-  <body style="height: 90%;margin: 0;">
+  <body style="height: 100%;margin: 0;">
     <div id="map" style="width: 100vw; height: 100%; background: #1b243a;"></div>
     <script type="text/javascript">
   //Creating the Map
@@ -79,25 +58,35 @@ a:hover, a:active {
 	popupAnchor:  [-2, -29]
 });
  //Coordinate Finder
-  var polylines = [];
+  var travels = L.layerGroup();
 	 var pointA = L.marker([0, 0], {
       draggable: true,
-    });
+    }).addTo(map);
     pointA.bindPopup('Начало').openPopup();
-	pointA.on('dragend', function(remove) {
-	polylines.forEach(function (item) {
-    map.removeLayer(item)
-});
-});
-    var pointB = L.marker([10, 10], {
+	    var pointB = L.marker([10, 10], {
       draggable: true,
-    });
+    }).addTo(map);
     pointB.bindPopup('Конец').openPopup();
 	pointB.on('dragend', function(e) {
-	var travel = L.polyline([pointA.getLatLng(), pointB.getLatLng()]);
-	travel.addTo(map);
-	polylines.push(travel);
-      pointB.getPopup().setContent((map.distance(pointA.getLatLng(), pointB.getLatLng())/7000).toFixed(0).toString()+' миль').openOn(map);
+	this.travels.addLayer(L.polyline([pointA.getLatLng(), pointB.getLatLng()]));
+	
+      pointB.getPopup().setContent(pointB.getLatLng().toString()).openOn(map);
+    });
+travels.addTo(map);
+pLineGroup = L.layerGroup()
+var latlngs = [
+    [45.51, -122.68],
+    [37.77, -122.43],
+    [34.04, -118.2]
+];
+this.pLineGroup.addLayer(L.polyline(latlngs, {color: 'red'}))
+pLineGroup.addTo(map)
+var pointC = L.marker([20, 20], {
+      draggable: true,
+    }).addTo(map);
+	pointC.bindPopup('Сброс').openPopup();
+	pointC.on('dragend', function(clear) {
+pLineGroup.removeFrom(map)
     });
         var ritland = L.marker([9.18, 13.8], {icon: capitalIcon,title:'Ритланд'})
             .bindPopup("<h3> Ритланд </h2> <b> Столица </b> - Сталесвет. <br> <b>Известные организации</b> - 'Верные Солнцу', 'Острая Луна'. <img src='data/bot.jpg'/> <br> Самодержавие людей. Известно искусством 'ковки душ', позволяющей создавать разумных автоматонов. Военный и религиозный центр борьбы Светлых рас с дроу, дуэргарами и их союзниками.",customOptions);
@@ -116,12 +105,10 @@ a:hover, a:active {
 
 	//Marker Groups
   var cities = L.layerGroup([ritland,whitetwrs,cadur,horter,triran,safur,raiho]);
-  var travels = L.layerGroup([pointA,pointB]);
   cities.addTo(map);
 //Marker Overlay
   var overlays={
-    "Столицы и государства" : cities,
-	"Расстояние" : travels
+    "Столицы и государства" : cities
     }
 //GROUP CONTROLS
   L.control.layers(null, overlays).addTo(map);

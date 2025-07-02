@@ -1,0 +1,83 @@
+
+		<!DOCTYPE html>
+<html = style="height: 100%;">
+  <head>
+    <title>Зов из Глубин</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scripts/leaflet.css">
+	<link rel="stylesheet" href="css/style.css">
+    <script src="scripts/leaflet.js"></script>
+	<link rel="icon" type="image/x-icon" href="icons/icon.png" />
+<style>
+body {background-color: #ead8c1;height: 100%; margin: 0;}
+a:link, a:visited {color:#6a6a6a;font-family: 'Mookmania';}
+a:hover, a:active {
+  color:black;}
+img {  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}}
+@font-face {
+            font-family: 'Mookmania';
+            src: url('data/Mookmania.otf');
+        }
+/* css to customize Leaflet default styles  */
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #ead8c1;
+    color: #000000;
+	font-size:12px;
+	font-family: 'Mookmania';
+}
+.custom .leaflet-container {
+    background: #ead8c1;
+    outline: 0;
+}
+</style>
+<nav>
+<ul>
+<li style="color:black;background-color: #ead8c1;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 80 px;
+  display: inline-block;">
+ <a style="text-decoration: none; font-size: 20px;" href="index.html" > <b> Карта мира&nbsp; </b>   </a>
+ <a style="text-decoration: none;font-size: 20px;color:black;" href="triran.html"> <b> Карта Трирана&nbsp; </b> </a>
+ <a style="text-decoration: none;font-size: 20px;" href="religion.html"> <b> Религия&nbsp; </b> </a> </li>
+</ul>
+</nav>
+  </head>
+  <body>
+  <img style="width: 95%;" src='data/triran translate.jpg' onclick="enlargeImg()" onmouseover="hover()" onmouseout="hoverout()" id="img1"/>
+<p> &nbsp </p>
+<script>
+x=0
+        img = document.getElementById("img1");
+        function enlargeImg() {
+		  if (x % 2 == 0)
+        {
+			x=x+1;
+            img.style.height = "95%";
+			img.style.width = "auto";
+			img.style.align = "center";
+            img.style.transition = "width 0.5s ease";
+        }
+      else {
+			x=x+1;
+            img.style.width = "95%";
+            img.style.height = "auto";
+            img.style.transition = "width 0.5s ease";
+			img.style.align = "center";
+        } }
+		function hover() {
+  document.getElementById("img1").style.cursor = "pointer";
+}
+
+		function hoverout() {
+   document.getElementById("img1").style.cursor = "default";
+}
+    </script>
+  </body>
+</html>

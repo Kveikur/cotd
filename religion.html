@@ -1,0 +1,98 @@
+
+		<!DOCTYPE html>
+<html = style="height: 100%;">
+  <head>
+    <title>Зов из Глубин</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scripts/leaflet.css">
+	<link rel="stylesheet" href="css/style.css">
+    <script src="scripts/leaflet.js"></script>
+	<link rel="icon" type="image/x-icon" href="icons/icon.png" />
+<style>
+body {background-color: #ead8c1;height: 100%; margin: 0;}
+a:link, a:visited {color:#6a6a6a;font-family: 'Mookmania';}
+a:hover, a:active {
+  color:black;}
+table, th, td {
+  border: 2px solid black;border-collapse: collapse; padding: 1 1em; font-size: 20px;text-align: center; 
+}
+tr:nth-child(even) {
+  background-color: #dbbc94;
+}
+@font-face {
+            font-family: 'Mookmania';
+            src: url('data/Mookmania.otf');
+        }
+/* css to customize Leaflet default styles  */
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #ead8c1;
+    color: #000000;
+	font-size:12px;
+	font-family: 'Mookmania';
+}
+.custom .leaflet-container {
+    background: #ead8c1;
+    outline: 0;
+}
+</style>
+<nav>
+<ul>
+<li style="color:black;background-color: #ead8c1;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 80 px;
+  display: inline-block;">
+ <a style="text-decoration: none; font-size: 20px;" href="index.html" > <b> Карта мира&nbsp; </b>   </a>
+ <a style="text-decoration: none;font-size: 20px;" href="triran.html"> <b> Карта Трирана&nbsp; </b> </a>
+ <a style="text-decoration: none;font-size: 20px;color:black;" href="religion.html"> <b> Религия&nbsp; </b> </a> </li>
+</ul>
+</nav>
+  </head>
+  <body style="height: 90%;margin: 0;font-family: 'Mookmania';">
+  <p style="margin-left: 50px;font-size: 20px;width: 60vw;min-width: 300px;text-indent: 25px;text-align: justify;"> История мира Диаир начинается с момента, когда Всеотец, путешествуя по Космосу, влюбился в Солнце и из осколков небесных тел создал земную твердь. </p>
+	<p style="margin-left: 50px;font-size: 20px;width: 60vw;min-width: 300px;text-indent: 25px;text-align: justify;"> Всеотец породил двух сыновей – <b>Оразда</b> и <b>Моркора</b>. Насколько Оразд был чист и созидателен, настолько Моркор был нечестив и разрушителен. Видя различия своих сыновей, Всеотец разделил земную твердь, создав <b>Светлые и Тёмные земли</b>, дав каждому сыну свою часть.
+	Светлые земли наполнились жизнью и изобилием, Тёмные земли быстро превратились в выжженые пустоши. </p>
+	<p style="margin-left: 50px;font-size: 20px;width: 60vw;min-width: 300px;text-indent: 25px;text-align: justify;"> Всетворец Оразд обуздал первородные силы мира и создал по своему подобию <b>Светлые расы</b> – гномов, людей, дварфов и эльфов. Всегубитель Моркор позавидовал своему брату и одной ночью выкрал часть Светлых рас.
+	Моркор схватил в охапку гномов, дварфов, людей и эльфов и перенёс их через океан в Тёмные земли. Однако скверна Всегубителя успела проникнуть в них. Эльфы превратились в дроу, дварфы в дуэргаров, а гномы – в свирфнеблинов.
+	Люди не пережили путешествия через океан из-за короткого срока жизни. Часть украденных Светлых рас выпала из рук Моркора и одичала под влиянием необузданной первородной силы.
+	Все из них подверглись влиянию скверны, кто-то в меньшей степени, например полурослики и эладрины,	кто-то в большей – орки, гоблины, гноллы и прочие существа, получившие название <b>Диких рас</b>. Именно скверной Всегубителя объясняется появление <b>Бледных пожаров</b>. </p>
+	<p style="margin-left: 50px;font-size: 20px;width: 60vw;min-width: 300px;text-indent: 25px;text-align: justify;"> Очнувшись после сна, Оразд мгновенно понял, что произошло, и вызвал Моркора на поединок. Моркор ответил на вызов. Сила Оразда велика, но разрушающая мощь Моркора ей не уступает.
+	Вовлечённые борьбой двух братьев, первородные силы, представляющие собой базовые принципы мироздания, присягнули на верность либо одному, либо другому богу. Духи добра получили название <b>Аэзи</b>, Духи зла – <b>Абасы</b>. Боги и по сей день ведут борьбу между собой – эльфы утверждают, что они соревнуются в стрельбе из лука, дварфы – что сражаются тяжёлыми как горы молотами.
+	Как бы то ни было, ни Оразд, ни Моркор не отвечают на молитвы смертных, в отличие от Аэзи и Абасов,  которые охотно дают силы тем, кто посвящает себя тем или иным доктринам. Через них вера смертных превращается в силу, подпитывающую богов. Всеотец, увидев вражду сыновей, разозлился на них и вернулся в Космос, пообещав вернуться, когда их поединок разрешится.
+<table style="color:black;background-color: #ead8c1; margin: 50px;font-family: 'Mookmania';width: 60vw;" >
+  <tr>     <th>Аэзи</th>     <th>Абасы</th> </tr>
+  <tr>
+    <td>Ильма́ра <br> <i> (Сострадание)</i> </td>
+    <td>Морт <br> <i> (Насилие)</i> </td>
+  </tr>
+  <tr>
+    <td>Орвата́т <br> <i> (Благой помысел)</i> </td>
+    <td>Анхрата́т <br> <i> (Злой помысел)</i> </td>
+  </tr>
+    <tr>
+    <td>Вира́ша <br> <i> (Истина)</i> </td>
+    <td>И́ндра <br> <i> (Ложь)</i> </td>
+  </tr>
+      <tr>
+    <td>Во́йпель <br> <i> (Святое благочестие)</i> </td>
+    <td>Каро́нг <br> <i> (Высокомерие)</i> </td>
+  </tr>
+        <tr>
+    <td>Ю́рген <br> <i> (Целостность)</i> </td>
+    <td>Дзима́ра <br> <i> (Болезнь)</i> </td>
+  </tr>
+          <tr>
+    <td>Бе́лтирд <br> <i> (Бессмертие)</i> </td>
+    <td>Зау́рви <br> <i> (Смерть)</i> </td>
+  </tr>
+            <tr>
+    <td>Аза́ша <br> <i> (Послушание)</i> </td>
+    <td>Грото́т <br> <i> (Ярость)</i> </td>
+  </tr>
+</table>
+<p> &nbsp </p>
+  </body>
+</html>
